@@ -33,6 +33,17 @@
   <body>
   <div id="player"></div>
   <div id="ground"></div>
- 
+  <script type="text/javascript">
+   var i = 0;
+   var pl1 = document.getElementById ("player");
+
+   document.addEventListener("keydown", function(e) {
+   	if (e.keyCode == 38) {
+		console.log("stisknuto " + i);
+		pl1.style.bottom = i + "px";
+		i = i+1;
+   	}   		
+   })   
+  </script>
   </body>
 </html>
