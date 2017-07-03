@@ -34,16 +34,47 @@
   <div id="player"></div>
   <div id="ground"></div>
   <script type="text/javascript">
-   var i = 0;
+   var a = -50; 
+   var v = 40;
+   var h = 100;
+   var dt = 1/30;
    var pl1 = document.getElementById ("player");
 
+   function dv(dtime) {
+   		return a * dtime;
+   }
+   function dh(dtime) {
+   		return v * dtime;
+   }
+
+   function update() {
+   	v = v + dv(dt);
+   	h = h + dh(dt);
+   	if (h <= 100) {
+   		h = 100;
+   		v = 0;
+   	}
+   	pl1.style.bottom = h + "px";
+   }
+
+   var released = true;
+
    document.addEventListener("keydown", function(e) {
+   	if (e.keyCode == 38 && released) {
+		v = v + 40;
+		released = false;
+   	}   		
+   }) 
+
+   document.addEventListener("keyup", function(e) {
    	if (e.keyCode == 38) {
-		console.log("stisknuto " + i);
-		pl1.style.bottom = i + "px";
-		i = i+1;
+		released = true;
    	}   		
    })   
+
+   setInterval(function() {
+   		update();
+   }, 1000 * dt);
   </script>
   </body>
 </html>
