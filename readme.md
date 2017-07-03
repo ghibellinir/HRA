@@ -3,4 +3,7 @@
 
 ## Popis
 
+![ukazka](./screenshot.png)
+
 hra se skakacim ctvereckem.
+
